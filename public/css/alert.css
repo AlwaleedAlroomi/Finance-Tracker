@@ -1,0 +1,21 @@
+.alert-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transform: translateY(-50%);
+    margin-top: 50%;
+}
+
+.alert {
+    width: fit-content;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: lightgreen;
+    margin-top: 8%;
+}
+
+.alert-description {
+    font-weight: bold;
+}
