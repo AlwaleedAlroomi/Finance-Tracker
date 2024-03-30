@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class AccountController extends Controller
 {
@@ -12,7 +15,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        //
+        return view('accounts.index');
     }
 
     /**
@@ -20,7 +23,7 @@ class AccountController extends Controller
      */
     public function create()
     {
-        //
+        return view('accounts.create');
     }
 
     /**
@@ -28,7 +31,16 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatoe = Validator::make($request->all(), [
+            'acc_name' => 'required',
+            'amount' => 'required|numeric',
+        ]);
+        if ($validatoe->fails()) {
+            return redirect('/accounts/create')->withErrors($validatoe->errors())->withInput();
+        }
+        $request['user_id'] = Auth::id();
+        $account = Account::create($request->all());
+        return redirect()->back()->withSuccess('Account created successfully');
     }
 
     /**

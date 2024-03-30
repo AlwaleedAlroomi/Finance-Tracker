@@ -39,29 +39,19 @@
     position: fixed;
     left: 20%;
     width: 60%;
-    margin-top: 5%;
     transition: transform 0.2s ease-in-out;
 }
 
 .form-group input[type="text"]:hover, .form-group input[type='email']:hover, .form-group input[type="password"]:hover {
-   border-color: black;
+    border-color: black;
 }
+
 .form-group input[type="submit"]:hover {
     filter: contrast(150%);
     transform: scale(1.05);
 }
 
-.btn {
-    display: flex;
-    justify-content: space-between;
+.form-group input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
-.btn a {
-    color: blue;
-    cursor: pointer;
-    transform: translateY(-50%);
-    text-decoration: underline;
-}
-.btn a:hover {
-    text-decoration: none;
-}
-

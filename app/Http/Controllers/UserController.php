@@ -28,8 +28,8 @@ class UserController extends Controller
         //create new user and save it in the database
         $request['password'] = Hash::make($request['password']);
         $user = User::create($request->all());
-        Mail::to($user->email)->send(new VerifyEmail($user->username));
-        return view('home')->with('msg', "Your account has been created successfully. Please check your email to verify your account.");
+        Mail::to($user->email)->send(new VerifyEmail($user->username, $user->id));
+        return redirect('/')->with('msg', "Your account has been created successfully. Please check your email to verify your account.");
     }
 
     public function login(Request $request)
@@ -44,7 +44,7 @@ class UserController extends Controller
 
         if (Auth::attempt($request->only('username', 'password'))) {
             $request->session()->regenerate();
-            return redirect('/verify');
+            return redirect('/');
         }
         return redirect('/login')->withErrors("The provided credentials do not match our records.")->withInput();
     }
@@ -57,9 +57,9 @@ class UserController extends Controller
         return redirect('/login');
     }
 
-    public function verifyEmail(Request $request)
+    public function verifyEmail(Request $request, $id)
     {
-        $user = User::findOrFail(Auth::id());
+        $user = User::findOrFail($id);
         $user->email_verified_at = now();
         $user->save();
         return redirect('/');
@@ -71,7 +71,7 @@ class UserController extends Controller
         if ($user->email_verified_at != null) {
             return redirect('/')->with('msg', "Your account has already been verified.");
         }
-        Mail::to($user->email)->send(new VerifyEmail($user->username));
+        Mail::to($user->email)->send(new VerifyEmail($user->username, $user->id));
         return redirect('/');
     }
 
