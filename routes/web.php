@@ -40,6 +40,7 @@ Route::post('/reset', [UserController::class, 'resetPassword'])->name('password.
 
 
 // Accounts urls
-Route::get('/accounts', [AccountController::class, 'index'])->name('accounts.index')->middleware('auth');
+Route::get('/accounts', [AccountController::class, 'index'])->name('accounts.index');
 Route::get('/accounts/create', [AccountController::class, 'create'])->name('accounts.create');
 Route::post('/accounts/store', [AccountController::class, 'store'])->name('accounts.store');
+Route::get('/accounts/{id}/show', [AccountController::class, 'show'])->name('accounts.show');
