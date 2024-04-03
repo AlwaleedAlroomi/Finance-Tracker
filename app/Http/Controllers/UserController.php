@@ -28,6 +28,7 @@ class UserController extends Controller
         //create new user and save it in the database
         $request['password'] = Hash::make($request['password']);
         $user = User::create($request->all());
+        Auth::login($user);
         Mail::to($user->email)->send(new VerifyEmail($user->username, $user->id));
         return redirect('/')->with('msg', "Your account has been created successfully. Please check your email to verify your account.");
     }

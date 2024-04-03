@@ -44,3 +44,6 @@ Route::get('/accounts', [AccountController::class, 'index'])->name('accounts.ind
 Route::get('/accounts/create', [AccountController::class, 'create'])->name('accounts.create');
 Route::post('/accounts/store', [AccountController::class, 'store'])->name('accounts.store');
 Route::get('/accounts/{id}/show', [AccountController::class, 'show'])->name('accounts.show');
+Route::get('/accounts/{account}/edit', [AccountController::class, 'edit'])->name('accounts.edit');
+Route::put('/accounts/{account}/upadte', [AccountController::class, 'update'])->name('accounts.update');
+Route::get('/accounts/{account}/delete', [AccountController::class, 'destroy'])->name('accounts.delete');

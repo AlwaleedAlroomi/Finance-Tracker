@@ -1,0 +1,52 @@
+.container {
+    margin: 50px;
+}
+
+.acc-container {
+    height: 300px;
+    background-color: white;
+    /* height: 150px; */
+}
+
+.acc-details {
+
+    margin-top: 75px;
+    width: fit-content;
+    height: 150px;
+    position:absolute;
+}
+
+.acc-details h2{
+    padding: 10px;
+    font-weight: bold;
+}
+
+.acc-details h3{
+    padding: 10px;
+    font-weight: bold;
+}
+
+.btn {
+    display: flex;
+    justify-content:end;
+    align-items: flex-end;
+    height: fit-content;
+    margin: 30px;
+    padding: 5px;
+}
+
+.btn a {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 5px;
+    font-weight: bold;
+}
+.edit {
+    background-color: green;
+    margin-right: 5px;
+}
+
+.delete {
+    background-color: red;
+    margin-left: 5px;
+}

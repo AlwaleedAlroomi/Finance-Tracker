@@ -40,7 +40,7 @@ class AccountController extends Controller
             return redirect('/accounts/create')->withErrors($validatoe->errors())->withInput();
         }
         $request['user_id'] = Auth::id();
-        $account = Account::create($request->all());
+        Account::create($request->all());
         return redirect('/accounts')->withSuccess('Account created successfully');
     }
 
@@ -58,7 +58,7 @@ class AccountController extends Controller
      */
     public function edit(Account $account)
     {
-        //
+        return view('accounts.edit', ['account' => $account]);
     }
 
     /**
@@ -66,7 +66,21 @@ class AccountController extends Controller
      */
     public function update(Request $request, Account $account)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'acc_name' => 'required',
+            'amount' => 'required|numeric',
+        ]);
+
+        if ($validator->fails() || $account->user_id != Auth::id()) {
+            return redirect()->back()->withErrors('$validator->errors()')->withInput();
+        }
+
+        $account->acc_name = $request->acc_name;
+        $account->amount = $request->amount;
+        $account->updated_at = now();
+        $account->save();
+
+        return redirect('/accounts')->with('success', 'Account updated successfully');
     }
 
     /**
@@ -74,6 +88,10 @@ class AccountController extends Controller
      */
     public function destroy(Account $account)
     {
-        //
+        if ($account->user_id != Auth::id()) {
+            return redirect()->back()->withErrors('You are not allowed to delete this account');
+        }
+        $account->delete();
+        return redirect('/accounts')->with('success', 'Account deleted successfully');
     }
 }
