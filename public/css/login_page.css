@@ -55,6 +55,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 .btn a {
     /* margin: 5px 0; */
     color: blue;
@@ -62,6 +63,15 @@
     transform: translateY(-50%);
     text-decoration: underline;
 }
+
 .btn a:hover {
     text-decoration: none;
+}
+
+#show-pass{
+    position: absolute;
+    top: 60.8%;
+    right: 30px;
+    transform: translateY(-50%);
+    cursor: pointer;
 }

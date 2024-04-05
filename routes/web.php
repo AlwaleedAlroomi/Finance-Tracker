@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\IncomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
 use App\Mail\VerifyEmail;
+use App\Models\Income;
 
 Route::get('/', function () {
     return view('home');
@@ -47,3 +48,13 @@ Route::get('/accounts/{id}/show', [AccountController::class, 'show'])->name('acc
 Route::get('/accounts/{account}/edit', [AccountController::class, 'edit'])->name('accounts.edit');
 Route::put('/accounts/{account}/upadte', [AccountController::class, 'update'])->name('accounts.update');
 Route::get('/accounts/{account}/delete', [AccountController::class, 'destroy'])->name('accounts.delete');
+
+
+// Income urls
+Route::get('/incomes/create', [IncomeController::class, 'create'])->name('incomes.create');
+Route::post('/incomes/store', [IncomeController::class, 'store'])->name('incomes.store');
+Route::get('/incomes', [IncomeController::class, 'index'])->name('incomes.index');
+Route::get('/incomes/{income}/show', [IncomeController::class, 'show'])->name('incomes.show');
+Route::get('/incomes/{income}/edit', [IncomeController::class, 'edit'])->name('incomes.edit');
+Route::put('/incomes/{income}/update', [IncomeController::class, 'update'])->name('incomes.update');
+Route::get('/incomes/{income}/delete', [IncomeController::class, 'destroy'])->name('incomes.delete');

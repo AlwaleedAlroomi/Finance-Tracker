@@ -24,6 +24,9 @@
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter your password">
+            <span class="show-pass" id="show-pass" onclick="togglePasswordVisibility()">
+                <i class="fa fa-eye"></i>
+            </span>
         </div>
         <div class="btn">
             <a href="{{ route('user.login') }}">Already a user?Sign In</a>
@@ -46,5 +49,19 @@
             menu.classList.add('hidden');
         }
     });
+
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById('password');
+        const showPasword = document.getElementById('show-pass');
+        showPasword.addEventListener('mousedown', function() {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                showPasword.innerHTML = '<i class="fa fa-eye-slash"></i>';
+            } else {
+                passwordInput.type = 'password';
+                showPasword.innerHTML = '<i class="fa fa-eye"></i>';
+            }
+        })
+    }
 </script>
 @endsection

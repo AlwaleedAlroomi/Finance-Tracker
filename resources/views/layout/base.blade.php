@@ -57,8 +57,8 @@
                                 <a href="#"
                                     class="bg-gray-900 text-white hover:bg-gray rounded-md px-3 py-2 text-sm font-medium"
                                     aria-current="page">Dashboard</a>
-                                <a href="#"
-                                    class="text-white hover:bg-gray rounded-md px-3 py-2 text-sm font-medium">Team</a>
+                                <a href="{{ route('incomes.index') }}"
+                                    class="text-white hover:bg-gray rounded-md px-3 py-2 text-sm font-medium">Incomes</a>
                                 <a href="#"
                                     class="text-white hover:bg-gray rounded-md px-3 py-2 text-sm font-medium">Projects</a>
                                 <a href="#"
@@ -132,6 +132,9 @@
                                 <!-- Active: "bg-gray-100", Not Active: "" -->
                                 <a href="#" class="block px-4 py-2 text-sm text-white hover:font-bold"
                                     role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                                <a href="{{ route('incomes.create') }}"
+                                    class="block px-4 py-2 text-sm text-white hover:font-bold" role="menuitem"
+                                    tabindex="-1" id="user-menu-item-0">Add Income</a>
                                 <a href="{{ route('user.resend') }}"
                                     class="block px-4 py-2 text-sm text-white hover:font-bold" role="menuitem"
                                     tabindex="-1" id="user-menu-item-1">Settings</a>
@@ -153,8 +156,8 @@
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                     <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
                         aria-current="page">Dashboard</a>
-                    <a href="#"
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
+                    <a href="{{ route('incomes.index') }}"
+                        class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Incomes</a>
                     <a href="#"
                         class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
                     <a href="#"

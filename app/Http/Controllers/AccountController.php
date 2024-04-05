@@ -6,7 +6,7 @@ use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
+use App\Models\Income;
 
 class AccountController extends Controller
 {
@@ -50,7 +50,8 @@ class AccountController extends Controller
     public function show($id)
     {
         $account = Account::find($id);
-        return view('accounts.show', ['account' => $account]);
+        $incomes = Income::where('account_id', $account->id)->get();
+        return view('accounts.show', ['account' => $account, 'incomes' => $incomes]);
     }
 
     /**

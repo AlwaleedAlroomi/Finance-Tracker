@@ -1,0 +1,43 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content; /* Set height to 100% of viewport height */
+    margin: 30px;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.card {
+    margin: 10px;
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 20px;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    margin-bottom: 0;
+}
+
+.link-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: fit-content;
+    margin: 30px;
+}
+
+.link {
+    width: fit-content;
+    background-color: green;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+}
